@@ -163,24 +163,37 @@ export const getFormatComparisonData = () => {
     .sort((a, b) => b.avgEngagement - a.avgEngagement);
 };
 
-// Get chart data for revenue vs engagement
+// Revenue vs Engagement chart data from analysis table
+export const revenueEngagementData = [
+  { date: "Dec 1", fullDate: "Dec 1, 2025", platform: "IG", type: "Reel + Story", engagement: 0.100, revenue: 433.5, lift: -22.3, hasTikTok: false, hasReel: true },
+  { date: "Dec 2", fullDate: "Dec 2, 2025", platform: "TikTok", type: "Video", engagement: 0.074, revenue: 478, lift: -14.3, hasTikTok: true, hasReel: false },
+  { date: "Dec 3", fullDate: "Dec 3, 2025", platform: "TikTok + IG", type: "Video + Post", engagement: 0.093, revenue: 595, lift: 6.6, hasTikTok: true, hasReel: false },
+  { date: "Dec 4", fullDate: "Dec 4, 2025", platform: "IG", type: "Reel + Story", engagement: 0.104, revenue: 534, lift: -4.3, hasTikTok: false, hasReel: true },
+  { date: "Dec 5", fullDate: "Dec 5, 2025", platform: "TikTok + IG", type: "Video + Story", engagement: 0.082, revenue: 400.5, lift: -28.2, hasTikTok: true, hasReel: false },
+  { date: "Dec 6", fullDate: "Dec 6, 2025", platform: "TikTok + IG", type: "Video + Story", engagement: 0.090, revenue: 384, lift: -31.2, hasTikTok: true, hasReel: false },
+  { date: "Dec 7", fullDate: "Dec 7, 2025", platform: "IG", type: "Reel", engagement: 0.095, revenue: 473, lift: -15.2, hasTikTok: false, hasReel: true },
+  { date: "Dec 8", fullDate: "Dec 8, 2025", platform: "TikTok + IG", type: "Video + Post", engagement: 0.101, revenue: 623, lift: 11.6, hasTikTok: true, hasReel: false },
+  { date: "Dec 9", fullDate: "Dec 9, 2025", platform: "IG", type: "Reel + Story", engagement: 0.109, revenue: 778.5, lift: 39.5, hasTikTok: false, hasReel: true },
+  { date: "Dec 10", fullDate: "Dec 10, 2025", platform: "TikTok + IG", type: "Video + Story", engagement: 0.116, revenue: 734, lift: 31.5, hasTikTok: true, hasReel: false },
+  { date: "Dec 11", fullDate: "Dec 11, 2025", platform: "TikTok + IG", type: "Video + Post", engagement: 0.088, revenue: 578.5, lift: 3.7, hasTikTok: true, hasReel: false },
+  { date: "Dec 12", fullDate: "Dec 12, 2025", platform: "IG", type: "Reel + Story", engagement: 0.121, revenue: 511.5, lift: -8.3, hasTikTok: false, hasReel: true },
+  { date: "Dec 13", fullDate: "Dec 13, 2025", platform: "TikTok + IG", type: "Video + Story", engagement: 0.085, revenue: 583.5, lift: 4.6, hasTikTok: true, hasReel: false },
+  { date: "Dec 14", fullDate: "Dec 14, 2025", platform: "TikTok + IG", type: "Video + Reel", engagement: 0.128, revenue: 800.5, lift: 43.5, hasTikTok: true, hasReel: true },
+];
+
+// Get chart data for revenue vs engagement (formatted for recharts)
 export const getRevenueEngagementChartData = () => {
-  return dailySales.map(sale => {
-    const posts = getPostsForDate(sale.date);
-    const avgEngagement = getAvgEngagementForDate(sale.date);
-    const hasTikTok = posts.some(p => p.platform === 'tiktok');
-    const hasReel = posts.some(p => p.type === 'reel');
-    
-    return {
-      date: sale.date.split('-').slice(1).join('/'),
-      fullDate: sale.date,
-      revenue: sale.revenue,
-      engagement: Number((avgEngagement * 100).toFixed(2)),
-      hasTikTok,
-      hasReel,
-      postCount: posts.length,
-    };
-  });
+  return revenueEngagementData.map(d => ({
+    date: d.date.replace("Dec ", ""),
+    fullDate: d.fullDate,
+    platform: d.platform,
+    type: d.type,
+    revenue: d.revenue,
+    engagement: Number((d.engagement * 100).toFixed(1)),
+    lift: d.lift,
+    hasTikTok: d.hasTikTok,
+    hasReel: d.hasReel,
+  }));
 };
 
 // Products info
