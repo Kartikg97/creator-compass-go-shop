@@ -17,20 +17,18 @@ const CustomTooltip = ({ active, payload, label }: any) => {
     const data = payload[0].payload;
     return (
       <div className="bg-card border border-border rounded-lg p-3 shadow-lg">
-        <p className="font-medium text-foreground mb-2">{data.fullDate}</p>
+        <p className="font-medium text-foreground mb-1">{data.fullDate}</p>
+        <p className="text-xs text-muted-foreground mb-2">{data.platform} • {data.type}</p>
         <div className="space-y-1 text-sm">
           <p className="text-muted-foreground">
-            Revenue: <span className="text-primary font-medium">£{data.revenue}</span>
+            Avg Lag Sales: <span className="text-primary font-medium">£{data.revenue}</span>
           </p>
           <p className="text-muted-foreground">
             Engagement: <span className="text-accent font-medium">{data.engagement}%</span>
           </p>
-          {data.hasTikTok && (
-            <p className="text-chart-accent">📹 TikTok posted</p>
-          )}
-          {data.hasReel && (
-            <p className="text-primary">🎬 Reel posted</p>
-          )}
+          <p className={`font-medium ${data.lift >= 0 ? 'text-emerald-600' : 'text-rose-500'}`}>
+            Lift: {data.lift >= 0 ? '+' : ''}{data.lift}%
+          </p>
         </div>
       </div>
     );
