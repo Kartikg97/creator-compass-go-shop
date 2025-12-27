@@ -77,19 +77,19 @@ export const getEngagementBucketData = () => {
   return [
     {
       level: "Low",
-      threshold: "< 0.07",
+      threshold: "< 7%",
       avgRevenue: 465,
       lift: -16,
     },
     {
       level: "Medium",
-      threshold: "0.07 - 0.11",
+      threshold: "7% - 11%",
       avgRevenue: 601,
       lift: 8,
     },
     {
       level: "High",
-      threshold: "> 0.11",
+      threshold: "> 11%",
       avgRevenue: 749,
       lift: 34,
     },
