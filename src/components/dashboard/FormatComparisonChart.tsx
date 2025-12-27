@@ -27,10 +27,28 @@ const CustomTooltip = ({ active, payload }: any) => {
         <p className="text-sm text-muted-foreground">
           Avg Engagement: <span className="text-accent font-medium">{(data.avgEngagement * 100).toFixed(1)}%</span>
         </p>
+        <p className="text-xs text-muted-foreground mt-1 italic">{data.interpretation}</p>
       </div>
     );
   }
   return null;
+};
+
+const CustomBarLabel = ({ x, y, width, height, value, index, data }: any) => {
+  const item = data[index];
+  if (!item) return null;
+  
+  return (
+    <text
+      x={x + width + 8}
+      y={y + height / 2}
+      fill="hsl(var(--muted-foreground))"
+      fontSize={12}
+      dominantBaseline="middle"
+    >
+      {item.interpretation}
+    </text>
+  );
 };
 
 export const FormatComparisonChart = () => {
@@ -52,7 +70,7 @@ export const FormatComparisonChart = () => {
           <BarChart
             data={formatData}
             layout="vertical"
-            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+            margin={{ top: 5, right: 180, left: 20, bottom: 5 }}
           >
             <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" horizontal={true} vertical={false} />
             <XAxis 
@@ -77,6 +95,7 @@ export const FormatComparisonChart = () => {
               dataKey="avgEngagement" 
               radius={[0, 6, 6, 0]}
               barSize={36}
+              label={(props: any) => <CustomBarLabel {...props} data={formatData} />}
             >
               {formatData.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
