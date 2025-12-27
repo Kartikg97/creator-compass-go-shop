@@ -96,29 +96,30 @@ export const getEngagementBucketData = () => {
   ];
 };
 
-// Get format comparison data
+// Get format comparison data (fixed values from analysis)
 export const getFormatComparisonData = () => {
-  const formats: Record<string, { totalScore: number; count: number }> = {};
-  
-  contentPosts.forEach(post => {
-    const formatKey = post.platform === 'tiktok' ? 'TikTok Video' : 
-                      post.type === 'reel' ? 'Instagram Reel' :
-                      post.type === 'story' ? 'Instagram Story' : 'Instagram Post';
-    
-    if (!formats[formatKey]) {
-      formats[formatKey] = { totalScore: 0, count: 0 };
-    }
-    
-    formats[formatKey].totalScore += calculateEngagementScore(post);
-    formats[formatKey].count++;
-  });
-
-  return Object.entries(formats)
-    .map(([format, data]) => ({
-      format,
-      avgEngagement: Number((data.totalScore / data.count).toFixed(3)),
-    }))
-    .sort((a, b) => b.avgEngagement - a.avgEngagement);
+  return [
+    {
+      format: "TikTok Video",
+      avgEngagement: 0.115,
+      interpretation: "Highest intent, strongest engagement",
+    },
+    {
+      format: "Instagram Reel",
+      avgEngagement: 0.105,
+      interpretation: "Very strong, close to TikTok",
+    },
+    {
+      format: "Instagram Post",
+      avgEngagement: 0.085,
+      interpretation: "Moderate engagement",
+    },
+    {
+      format: "Story",
+      avgEngagement: 0.025,
+      interpretation: "Awareness only",
+    },
+  ];
 };
 
 // Revenue vs Engagement chart data from analysis table
