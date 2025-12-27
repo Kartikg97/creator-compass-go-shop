@@ -1,11 +1,73 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { DashboardHeader } from "@/components/dashboard/DashboardHeader";
+import { InsightCard } from "@/components/dashboard/InsightCard";
+import { RevenueEngagementChart } from "@/components/dashboard/RevenueEngagementChart";
+import { EngagementBucketTable } from "@/components/dashboard/EngagementBucketTable";
+import { FormatComparisonChart } from "@/components/dashboard/FormatComparisonChart";
+import { RecommendedActions } from "@/components/dashboard/RecommendedActions";
+import { TrendingUp, Target, Lightbulb } from "lucide-react";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <div className="min-h-screen bg-background">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Header */}
+        <DashboardHeader />
+        
+        {/* Section 1: Top Summary Cards */}
+        <section className="mt-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+            <InsightCard
+              icon={TrendingUp}
+              iconColor="text-chart-accent"
+              title="Best Performing Format"
+              value="TikTok Videos"
+              subtitle="+34% avg revenue lift within 48h"
+              delay={100}
+            />
+            <InsightCard
+              icon={Target}
+              iconColor="text-accent"
+              title="Engagement Threshold"
+              value="High (>0.11)"
+              subtitle="= Step-change in revenue"
+              delay={200}
+            />
+            <InsightCard
+              icon={Lightbulb}
+              iconColor="text-primary"
+              title="Recommendation"
+              value="More Reels + TikToks"
+              subtitle="Stories = reminders, not drivers"
+              delay={300}
+            />
+          </div>
+        </section>
+        
+        {/* Section 2: Revenue vs Engagement Chart */}
+        <section className="mt-8">
+          <RevenueEngagementChart />
+        </section>
+        
+        {/* Section 3 & 4: Two column layout */}
+        <section className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <EngagementBucketTable />
+          <FormatComparisonChart />
+        </section>
+        
+        {/* Section 5: Recommended Actions */}
+        <section className="mt-8">
+          <RecommendedActions />
+        </section>
+        
+        {/* Footer */}
+        <footer className="mt-12 pt-6 border-t border-border opacity-0 animate-fade-in" style={{ animationDelay: '600ms' }}>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
+            <p>
+              Powered by <span className="font-medium text-foreground">Go.Shop</span> — AI-powered creator commerce
+            </p>
+            <p>Data: Dec 1–16, 2025 • 30 posts • £8,920 revenue</p>
+          </div>
+        </footer>
       </div>
     </div>
   );
