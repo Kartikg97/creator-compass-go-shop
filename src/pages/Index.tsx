@@ -53,8 +53,8 @@ const Index = () => {
         
         {/* Section 3 & 4: Two column layout */}
         <section className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <EngagementBucketTable />
           <FormatComparisonChart />
+          <EngagementBucketTable />
         </section>
         
         {/* Section 5: Recommended Actions */}
