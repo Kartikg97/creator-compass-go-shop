@@ -95,6 +95,20 @@ export const RevenueEngagementChart = () => {
               />
             ))}
             
+            {/* Horizontal reference line for average daily revenue */}
+            <ReferenceLine 
+              yAxisId="left"
+              y={558} 
+              stroke="hsl(var(--muted-foreground))"
+              strokeDasharray="6 3"
+              label={{ 
+                value: "Avg: £558", 
+                position: "right", 
+                fill: "hsl(var(--muted-foreground))", 
+                fontSize: 11 
+              }}
+            />
+            
             <Bar 
               yAxisId="left"
               dataKey="revenue" 
@@ -115,7 +129,7 @@ export const RevenueEngagementChart = () => {
         </ResponsiveContainer>
       </div>
       
-      <div className="flex items-center gap-6 mt-4 text-sm">
+      <div className="flex flex-wrap items-center gap-6 mt-4 text-sm">
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded bg-primary" />
           <span className="text-muted-foreground">Daily Revenue</span>
@@ -125,8 +139,12 @@ export const RevenueEngagementChart = () => {
           <span className="text-muted-foreground">Engagement Score</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-3 h-0.5 bg-chart-accent" style={{ borderStyle: 'dashed' }} />
-          <span className="text-muted-foreground">TikTok Post</span>
+          <div className="w-6 h-0.5 border-t-2 border-dashed border-chart-accent" />
+          <span className="text-muted-foreground">TikTok-led</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-6 h-0.5 border-t-2 border-dotted border-blue-500" />
+          <span className="text-muted-foreground">Instagram-led</span>
         </div>
       </div>
     </div>

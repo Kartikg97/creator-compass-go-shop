@@ -41,7 +41,7 @@ export const FlippableInsightCard = ({
             <div className={cn("p-3 rounded-lg bg-secondary mb-4", iconColor.replace('text-', 'bg-') + '/10')}>
               <Icon className={cn("w-8 h-8", iconColor)} />
             </div>
-            <h3 className="text-lg font-semibold text-foreground">{frontTitle}</h3>
+            <h3 className="text-lg font-semibold text-foreground">{frontTitle}?</h3>
             <p className="text-sm text-muted-foreground mt-2">Tap to reveal</p>
           </div>
         </div>
