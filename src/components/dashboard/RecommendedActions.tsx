@@ -42,7 +42,7 @@ export const RecommendedActions = () => {
         <div className="flex items-center gap-2 mb-1">
           <CheckCircle2 className="w-5 h-5 text-success" />
           <h2 className="text-xl font-semibold text-foreground">
-            What Should I Do More Of?
+            What should you do more of?
           </h2>
         </div>
         <p className="text-sm text-muted-foreground">
