@@ -10,8 +10,11 @@ export const DashboardHeader = () => {
           </div>
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold text-foreground">
-              Creator Analytics
+              Creator Compass
             </h1>
+            <p className="text-muted-foreground text-sm italic">
+              from scroll to sale
+            </p>
             <p className="text-muted-foreground text-sm">
               Monsieur Grooming • @danedgar
             </p>
