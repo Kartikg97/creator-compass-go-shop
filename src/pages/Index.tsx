@@ -1,10 +1,10 @@
 import { DashboardHeader } from "@/components/dashboard/DashboardHeader";
-import { InsightCard } from "@/components/dashboard/InsightCard";
+import { FlippableInsightCard } from "@/components/dashboard/FlippableInsightCard";
 import { RevenueEngagementChart } from "@/components/dashboard/RevenueEngagementChart";
 import { EngagementBucketTable } from "@/components/dashboard/EngagementBucketTable";
 import { FormatComparisonChart } from "@/components/dashboard/FormatComparisonChart";
 import { RecommendedActions } from "@/components/dashboard/RecommendedActions";
-import { TrendingUp, Target, Lightbulb } from "lucide-react";
+import { Video, Eye, ShoppingBag } from "lucide-react";
 
 const Index = () => {
   return (
@@ -16,28 +16,31 @@ const Index = () => {
         {/* Section 1: Top Summary Cards */}
         <section className="mt-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
-            <InsightCard
-              icon={TrendingUp}
+            <FlippableInsightCard
+              icon={Video}
               iconColor="text-chart-accent"
-              title="Best Performing Format"
-              value="TikTok Videos"
-              subtitle="+34% avg revenue lift within 48h"
+              frontTitle="What format is working for you"
+              backTitle="Best Performing Format"
+              backValue="TikTok Videos"
+              backSubtitle="+34% avg revenue lift within 48h"
               delay={100}
             />
-            <InsightCard
-              icon={Target}
+            <FlippableInsightCard
+              icon={Eye}
               iconColor="text-accent"
-              title="Engagement Threshold"
-              value="High (>0.11)"
-              subtitle="= Step-change in revenue"
+              frontTitle="How many views you should target"
+              backTitle="Views Threshold"
+              backValue="70k–100k+"
+              backSubtitle="Revenue spikes above 25% only occur after days with ~70k–100k+ total views"
               delay={200}
             />
-            <InsightCard
-              icon={Lightbulb}
+            <FlippableInsightCard
+              icon={ShoppingBag}
               iconColor="text-primary"
-              title="Recommendation"
-              value="More Reels + TikToks"
-              subtitle="Stories = reminders, not drivers"
+              frontTitle="What content you should post more often"
+              backTitle="Content Type"
+              backValue="Product-led Content"
+              backSubtitle="~35–45% higher lagged revenue compared to lifestyle-only content"
               delay={300}
             />
           </div>
